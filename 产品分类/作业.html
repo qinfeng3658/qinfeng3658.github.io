@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul id="ul">
+			
+		</ul>
+		<div id="div">
+			
+		</div>
+	</body>
+</html>
+<script type="text/javascript" src="../js/ajax-2.0.js"></script>
+<script>
+ajax({
+	method: "GET",
+	url: "http://csit.top/api_cat.php",
+	json: {},
+	cb:function(data){
+		var arr = data.dara;
+		var oUl = document.getElementById('ul');
+		for (var i = 0; i<arr.length; i++){
+			var oLi = document.createElement("li");
+			oLi.innerHTML = '<a href="#" onclick="func(' + arr[i].cat_id+ ')">' + arr[i].cat_name + '<a>'
+			oUl.appendChild(oLi)
+		}
+	}
+	
+})
+	
+function func(data){
+	ajax({
+		method: "GET",
+		url: "http://csit.top/api_goods.php",
+		json: {
+			car_id: data,
+			page: 1,
+			pagesize:1000
+		},
+		cb: function(data){
+			var b = "";
+			var arr = data.data;
+			for (var i =0; i<arr.length; i++){
+				b += arr[i].goods_name
+				b += '<img src"'+ arr[i].goods_thumb + '"/>'
+			}
+			document.getElementById("div").innerHTML = b
+		}
+	})
+}
+	
+</script>
