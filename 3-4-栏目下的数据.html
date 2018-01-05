@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+
+<script type="text/javascript" src="js/ajax-1.0.js" ></script>
+<script>
+	
+
+ajax({
+	method: "GET",
+	url: "http://csit.top/api_goods.php",
+	json: {
+		cat_id: 45,  // 分类： 45， 62
+		page: 1,
+		pagesize: 1000
+	},
+	cb: function(a) {
+		// 正常情况下，45分类下，第一个是“镍银香氛蜡烛”
+		console.log(a.data[0].goods_name)
+	}
+})
+
+</script>

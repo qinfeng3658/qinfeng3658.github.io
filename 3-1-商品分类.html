@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+
+	</head>
+	<body>
+	</body>
+</html>
+
+<script type="text/javascript" src="js/ajax-1.0.js" ></script>
+<script>
+
+
+// 因为数据来自后端，所以必须通过 ajax 来获取
+//   ajax 是什么？ 
+//        asychonyce javascript and xml
+//        异步的           JS           和  XML（JSON） 
+// 
+//        1. 异步
+//        2. 不能跨域
+
+// 跨域： 协议、域名、端口 三者之间有1个不一样就是跨域
+//  http://www.baidu.com        http://www.google.cn    跨域
+//  http://www.baidu.com        https://www.baidu.com    跨域
+//  http://127.0.0.1            http://localhost        跨域  
+//  http://localhost/a.html     http://localhost/b/c/d.html    没跨域！
+//          80端口可以省略不写
+
+//  65535 张门    一般web是80门，  FTP协议21，  Java: 8080, nodejs： 3000
+	
+	
+// http://127.0.0.1:8020           http://csit.top/api_user.php	跨域（域名不一样！）
+
+// 跨域的解决办法：
+//   1. 服务器进行配置，允许跨域！
+//   2. JSONP
+
+
+
+// 输出获取到数据中所有分类名
+// http://csit.top/api_cat.php   GET
+
+
+
+
+
+
+
+
+
+
+
+var obj = {
+	method: "GET",
+	url: "http://csit.top/api_cat.php",
+	json: {},
+	cb: function(data) {
+		var arr = data.data;
+		for(var i= 0; i<arr.length; i++){
+			console.log(arr[i])
+		}
+	}
+}
+
+ajax(obj);
+
+
+
+
+	
+</script>
